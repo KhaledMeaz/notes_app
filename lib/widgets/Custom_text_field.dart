@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes_app/widgets/constants.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key});
-
+  const CustomTextField({super.key, required this.hintText, this.maxLines=1});
+     final String hintText;
+     final int maxLines;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,8 +15,9 @@ class CustomTextField extends StatelessWidget {
           SizedBox(height: 32.h,),
            TextField(
             cursorColor: kPrimaryColor,
+            maxLines: maxLines,
             decoration: InputDecoration(
-              hintText: 'Titel',
+              hintText: hintText,
               hintStyle: const TextStyle(color: kPrimaryColor),
               border: OutLineInputBorder(),
               enabledBorder: OutLineInputBorder(),
