@@ -12,7 +12,6 @@ class CustomTextField extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Column(
         children: [
-          SizedBox(height: 32.h,),
            TextField(
             cursorColor: kPrimaryColor,
             maxLines: maxLines,
