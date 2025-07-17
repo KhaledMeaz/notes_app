@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes_app/widgets/constants.dart';
 
 class CustomBotton extends StatelessWidget {
-  const CustomBotton({super.key, this.onTap});
+  const CustomBotton({super.key, this.onTap, this.isLoading = false});
 final void Function()? onTap;
+final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,7 +18,7 @@ final void Function()? onTap;
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Center(
-          child: Text(
+          child: isLoading? SizedBox(height: 24.h,width: 24.w,child: const CircularProgressIndicator(color: Colors.black,)) : Text(
             'Add',
             style: TextStyle(
                 color: Colors.black,
