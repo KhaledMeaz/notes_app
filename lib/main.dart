@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/cubits/add_name_cubit/cubit/add_note_cubit.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/simple_cloc_observer.dart';
 import 'package:notes_app/views/notes_views.dart';
@@ -17,7 +18,6 @@ void main() async {
   runApp(const NotesApp());
 }
 
-
 class NotesApp extends StatelessWidget {
   const NotesApp({super.key});
 
@@ -27,15 +27,17 @@ class NotesApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder:(context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(brightness: Brightness.dark,fontFamily: 'Poppins'),
-          home: const NotesViews(),
+      builder: (context, child) {
+        return BlocProvider(
+          create: (context) => NotesCubit(),
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme:
+                ThemeData(brightness: Brightness.dark, fontFamily: 'Poppins'),
+            home: const NotesViews(),
+          ),
         );
       },
     );
-      
-    
   }
 }
