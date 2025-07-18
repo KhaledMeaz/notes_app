@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSearchIcon extends StatelessWidget {
-  const CustomSearchIcon({super.key, required this.icon});
-
+  const CustomSearchIcon({super.key, required this.icon, this.onPressed});
+final void Function()? onPressed;
 final IconData icon;
   @override
   Widget build(BuildContext context) {
@@ -15,8 +15,12 @@ final IconData icon;
           borderRadius: BorderRadius.circular(16.r),
           color: Colors.white.withOpacity(.07)),
       child:  Center(
-        child: Icon(
-          icon,size: 28.sp,
+        child: IconButton(
+          onPressed: onPressed,
+         icon:  Icon( icon,
+         size: 28.sp,
+         color: Colors.white,
+        ),
         ),
       ),
     );
